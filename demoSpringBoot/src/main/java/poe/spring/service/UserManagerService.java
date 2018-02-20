@@ -33,12 +33,22 @@ public class UserManagerService {
 	}
 
 	public User visualiserUser (Long id) {
-		System.out.println("Entree methode visualiserUser Service");
+		//System.out.println("Entree methode visualiserUser Service");
 		User user = userRepository.findOne(id);
-		System.out.println("Sortie methode visualiserUser Service");
+		//System.out.println("Sortie methode visualiserUser Service");
 
 		return user;
 		
 			
+	}
+
+	public void delete(Long userId) {
+		//System.out.println("Delete in Service");
+		userRepository.delete(userId);
+	}
+
+	public long count() {
+		return userRepository.count();
+		 
 	}
 }
