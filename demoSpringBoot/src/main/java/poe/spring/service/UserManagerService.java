@@ -15,15 +15,17 @@ public class UserManagerService {
 	private UserRepository userRepository;
 
 	public User signup(String login, String pwd) {
-		System.out.println("Entree signup de Service");
+		User user = null;
+		if (userRepository.findByLogin(login)==null) {
 		
-		User user = new User();
+		user = new User();
 		user.setLogin(login);
 		user.setPwd(pwd);
 
 		userRepository.save(user);
 		
 		System.out.println("sortie SignUp Service");
+		}
 		return user;
 	}
 
@@ -36,10 +38,7 @@ public class UserManagerService {
 		//System.out.println("Entree methode visualiserUser Service");
 		User user = userRepository.findOne(id);
 		//System.out.println("Sortie methode visualiserUser Service");
-
 		return user;
-		
-			
 	}
 
 	public void delete(Long userId) {
@@ -49,6 +48,20 @@ public class UserManagerService {
 
 	public long count() {
 		return userRepository.count();
-		 
 	}
+
+	/* Methode boolean qui ne sert a rien
+	 
+	public boolean singleLogin(String userLogin, String loginExistant) {
+		boolean unique = false;
+		if (userLogin != loginExistant) {
+			unique = true;
+		}
+		return unique;
+	}
+	*/
+	
+	
+	
+	
 }

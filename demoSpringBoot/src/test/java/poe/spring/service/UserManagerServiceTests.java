@@ -20,18 +20,34 @@ public class UserManagerServiceTests {
 	@Test
 	public void checkUserCreation() {
 
+		// enregistre un nouvel utilisateur en BDD
 		User newUser = userManagerService.signup("John", "ea3sy");
+		System.out.println("User crée: \n id: " + newUser.getId() + "\n login: " + newUser.getLogin() + "\n password: "
+				+ newUser.getPwd() + "\n  ");
+		
+		// Test que ce user n'est pas nul
 		assertThat(newUser).isNotNull();
-		System.out.println("User crée: \n id: "+newUser.getId()+"\n login: "+ newUser.getLogin() +"\n password: "+newUser.getPwd()+"\n  ");
-		
-		userManagerService.visualiserUser(1l);
-		System.out.println(userManagerService.visualiserUser(1l));
-		
-		userManagerService.delete(1l);
-		System.out.println("test de delete:");
-		
-		assertThat(userManagerService.visualiserUser(1l)).isNull();
-		
+
+		// Visualise le user créé.
+		userManagerService.visualiserUser(newUser.getId());
+		System.out.println(userManagerService.visualiserUser(newUser.getId()));
 	}
 
+	@Test
+	public void checkdelete() {
+		// enregistre un nouvel utilisateur en BDD
+		User newUser2 = userManagerService.signup("Joe", "Bo");
+		System.out.println("User crée: \n id: " + newUser2.getId() + "\n login: " + newUser2.getLogin() + "\n password: "
+				+ newUser2.getPwd() + "\n  ");
+
+		// Appel de la methode delete sur cet user
+		userManagerService.delete(newUser2.getId());
+		System.out.println("test de delete, user: " + userManagerService.visualiserUser(newUser2.getId()));
+
+		// Test du resultat de Delete
+		assertThat(userManagerService.visualiserUser(newUser2.getId())).isNull();
+
+	}
+
+	
 }
