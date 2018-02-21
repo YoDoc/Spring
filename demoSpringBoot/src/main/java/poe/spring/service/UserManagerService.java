@@ -14,6 +14,20 @@ public class UserManagerService {
 	@Autowired
 	private UserRepository userRepository;
 
+	
+	/*
+	 * 
+	 * public boolean doesLoginExist (String login) {
+		boolean doesLoginExist = false;
+		
+		if (userRepository.findByLogin(login)==null) doesLoginExist=true;
+			
+		return doesLoginExist;
+	}
+	*
+	*
+	*/
+	
 	public User signup(String login, String pwd) {
 		User user = null;
 		if (userRepository.findByLogin(login)==null) {

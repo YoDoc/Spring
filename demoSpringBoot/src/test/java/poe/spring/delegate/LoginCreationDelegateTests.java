@@ -49,6 +49,6 @@ public class LoginCreationDelegateTests {
 	 @Test
 	 public void checkLoginAuthorizedKO() {
 		 String loginKO = "toto";
-		 assertThat(LoginCreationDelegate.isAuthorized(loginKO)).isTrue();
+		 assertThat(LoginCreationDelegate.isAuthorized(loginKO)).isFalse();
 	 }
 }
