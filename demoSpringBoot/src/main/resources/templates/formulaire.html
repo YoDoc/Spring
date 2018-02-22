@@ -3,10 +3,11 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <body>
-	<h1>Page Hello simple</h1>
+	<h1>Bienvenue sur le Formulaire d'inscription au forum</h1>
 
-	<form th:action="@{/index/inscription}" method="post">
+	<form th:action="@{/index/formulaire}" method="post">
 		<div> login: <input type="text" name="login" /> </div>
+		<div> password: <input type="text" name="pwd" /> </div>
 		<input type="submit" value="save" />
 	</form>
 

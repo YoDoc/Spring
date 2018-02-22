@@ -29,6 +29,8 @@ public class UserManagerService {
 	*/
 	
 	public User signup(String login, String pwd) {
+		System.out.println("Entree SignUp Service");
+	
 		User user = null;
 		if (userRepository.findByLogin(login)==null) {
 		
