@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<h1>Proposer un nouveau Trajet</h1>
+
+	<form th:action="@{/index/nouveauTrajet}" method="post">
+		<div>
+			ville de Départ: <input type="text" name="villeDepart" />
+		</div>
+
+		<div>
+			ville d'Arrivée: <input type="text" name="villeArrivee" />
+		</div>
+
+		<div>
+			date de Départ: <input type="text" name="dateDepart" />
+		</div>
+
+		<div>
+			Prix du Trajet: <input type="text" name="prixTrajet" />
+		</div>
+		<div>
+			Nombre de places: <input type="text" name="nombrePlaces" />
+		</div>
+		<div>
+			login: <input type="text" name="login" />
+		</div>
+		<div>
+			password: <input type="text" name="pwd" />
+		</div>
+		<input type="submit" value="save" />
+	</form>
+
+</body>
+</html>
