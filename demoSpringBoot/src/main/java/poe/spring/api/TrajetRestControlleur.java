@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import poe.spring.api.dto.ProposerUnTrajetDTO;
 import poe.spring.domain.Trajet;
 import poe.spring.service.TrajetManagerService;
 
@@ -16,12 +17,13 @@ import poe.spring.service.TrajetManagerService;
 @RequestMapping("/api/trajet") // je crée/déclare cette url qui sera affiché à l'appel
 public class TrajetRestControlleur {
 
+	
 	@Autowired
 	TrajetManagerService trajetManagerService;
 	
 	@PostMapping
-	public Trajet save(@RequestBody Trajet trajet) {
-		Trajet nouveauTrajet = trajetManagerService.creation (trajet.getVilleDepart(), trajet.getVilleArrivee(), 
+	public Trajet save(@RequestBody ProposerUnTrajetDTO trajet) {
+		Trajet nouveauTrajet = trajetManagerService.creation (trajet.getConducteurId(), trajet.getVilleDepart(), trajet.getVilleArrivee(), 
 				trajet.getDateDepart(), trajet.getPrixTrajet(), trajet.getNbPlaces());
 			return nouveauTrajet;
 		}

@@ -1,8 +1,11 @@
 package poe.spring.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,7 +18,15 @@ public class User {
 	@Size(min=1)
 	private String pwd;
 	
+	@OneToMany(mappedBy="conducteur")
+	private List<Trajet> trajets;
 	
+	public List<Trajet> getTrajets() {
+		return trajets;
+	}
+	public void setTrajets(List<Trajet> trajets) {
+		this.trajets = trajets;
+	}
 	public long getId() {
 		return id;
 	}

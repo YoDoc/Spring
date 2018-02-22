@@ -1,32 +1,19 @@
-package poe.spring.domain;
+package poe.spring.api.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Trajet {
+import poe.spring.domain.User;
 
-	@Id @GeneratedValue
+public class ProposerUnTrajetDTO {
 	private long id;
 	private String villeDepart;
 	private String villeArrivee;
 	private Date dateDepart;
 	private int prixTrajet;
 	private int nbPlaces;
-	
-	@ManyToOne
-	private User conducteur;
-	
-	public User getConducteur() {
-		return conducteur;
-	}
-	public void setConducteur(User conducteur) {
-		this.conducteur = conducteur;
-	}
+	private long conducteurId;
 	public long getId() {
 		return id;
 	}
@@ -45,14 +32,12 @@ public class Trajet {
 	public void setVilleArrivee(String villeArrivee) {
 		this.villeArrivee = villeArrivee;
 	}
-	
 	public Date getDateDepart() {
 		return dateDepart;
 	}
 	public void setDateDepart(Date dateDepart) {
 		this.dateDepart = dateDepart;
 	}
-	
 	public int getPrixTrajet() {
 		return prixTrajet;
 	}
@@ -65,7 +50,11 @@ public class Trajet {
 	public void setNbPlaces(int nbPlaces) {
 		this.nbPlaces = nbPlaces;
 	}
-	
-	
+	public long getConducteurId() {
+		return conducteurId;
+	}
+	public void setConducteurId(long conducteurId) {
+		this.conducteurId = conducteurId;
+	}
 	
 }
