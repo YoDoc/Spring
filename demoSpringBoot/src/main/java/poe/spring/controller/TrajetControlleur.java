@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import poe.spring.domain.Trajet;
-import poe.spring.domain.User;
+import poe.spring.form.TrajetForm;
 import poe.spring.service.TrajetManagerService;
 
 @Controller
@@ -28,12 +28,14 @@ public class TrajetControlleur {
 	}
 	
 	@PostMapping("/nouveauTrajet") 
-	public String proposerTrajet(@Valid Trajet trajet, BindingResult bindRes, RedirectAttributes attr) {
+	public String proposerTrajet(@Valid TrajetForm trajetForm, BindingResult bindRes, RedirectAttributes attr) {
 
-		Trajet nouveauTrajet = trajetManagerService.creation(trajet.getVilleDepart(), trajet.getVilleArrivee(), 
-				trajet.getDateDepart(), trajet.getPrixTrajet(), trajet.getNbPlaces());
+		Trajet nouveauTrajet = trajetManagerService.creation(trajetForm.getVilleDepart(), trajetForm.getVilleArrivee(), 
+				trajetForm.getDateDepart(), trajetForm.getPrixTrajet(), trajetForm.getNbPlaces());
 		
-		System.out.println("Trajet enregistré: \n Ville départ: " + nouveauTrajet.getVilleDepart() +"\n ville arrivée: "+ nouveauTrajet.getVilleArrivee());
+		System.out.println("Trajet enregistré: \n id: "+nouveauTrajet.getId()+"\n Ville départ: " + nouveauTrajet.getVilleDepart() +
+				"\n ville arrivée: "+ nouveauTrajet.getVilleArrivee() + "\n nb places: "+ nouveauTrajet.getNbPlaces()+ 
+				"\n prix: "+ nouveauTrajet.getPrixTrajet() + "\n");
 		return "trajetValide" ;
 
 	}

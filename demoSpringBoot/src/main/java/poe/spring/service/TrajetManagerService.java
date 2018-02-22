@@ -1,5 +1,6 @@
 package poe.spring.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class TrajetManagerService {
 	@Autowired
 	private TrajetRepository trajetRepository;
 
-	public Trajet creation(String villeDepart, String villeArrivee, String dateDepart, int prixTrajet, int nbPlaces) {
+	public Trajet creation(String villeDepart, String villeArrivee, Date dateDepart, int prixTrajet, int nbPlaces) {
 		Trajet trajet = new Trajet();
 
 		trajet.setVilleDepart(villeDepart);

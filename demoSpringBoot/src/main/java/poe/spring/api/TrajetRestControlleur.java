@@ -21,7 +21,8 @@ public class TrajetRestControlleur {
 	
 	@PostMapping
 	public Trajet save(@RequestBody Trajet trajet) {
-		Trajet nouveauTrajet = trajetManagerService.creation (trajet.getVilleDepart(), trajet.getVilleArrivee(), trajet.getDateDepart(), trajet.getPrixTrajet(), trajet.getNbPlaces());
+		Trajet nouveauTrajet = trajetManagerService.creation (trajet.getVilleDepart(), trajet.getVilleArrivee(), 
+				trajet.getDateDepart(), trajet.getPrixTrajet(), trajet.getNbPlaces());
 			return nouveauTrajet;
 		}
 	@GetMapping
