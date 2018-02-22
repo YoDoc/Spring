@@ -11,7 +11,7 @@ public class HomePageController {
 
 	@GetMapping
 	public String index (Model model) {
-		model.addAttribute("message", "Welcome Sir!");
+		model.addAttribute("message", "Welcome here!");
 		return "index";
 	}
 	
