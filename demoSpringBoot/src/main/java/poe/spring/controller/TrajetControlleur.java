@@ -28,9 +28,9 @@ public class TrajetControlleur {
 	}
 	
 	@PostMapping("/nouveauTrajet") 
-	public String proposerTrajet(@Valid TrajetForm trajetForm, BindingResult bindRes, RedirectAttributes attr) {
+	public String proposerTrajet(@Valid TrajetForm trajetForm, BindingResult bindRes, RedirectAttributes attr) throws Exception {
 
-		Trajet nouveauTrajet = trajetManagerService.creation(trajetForm.getVilleDepart(), trajetForm.getVilleArrivee(), 
+		Trajet nouveauTrajet = trajetManagerService.creation(trajetForm.getUser().getId(), trajetForm.getVilleDepart(), trajetForm.getVilleArrivee(), 
 				trajetForm.getDateDepart(), trajetForm.getPrixTrajet(), trajetForm.getNbPlaces());
 		
 		System.out.println("Trajet enregistré: \n id: "+nouveauTrajet.getId()+"\n Ville départ: " + nouveauTrajet.getVilleDepart() +

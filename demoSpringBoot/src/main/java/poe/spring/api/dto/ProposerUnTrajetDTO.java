@@ -2,14 +2,15 @@ package poe.spring.api.dto;
 
 import java.util.Date;
 
-import javax.persistence.ManyToOne;
 
-import poe.spring.domain.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 public class ProposerUnTrajetDTO {
 	private long id;
 	private String villeDepart;
 	private String villeArrivee;
+	 @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date dateDepart;
 	private int prixTrajet;
 	private int nbPlaces;

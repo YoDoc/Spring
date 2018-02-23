@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Trajet {
 
@@ -19,6 +21,8 @@ public class Trajet {
 	private int nbPlaces;
 	
 	@ManyToOne
+	@JsonIgnore // sinon un get user t'emmene dans trajet qui t'emmene ici, ou il va rechercher un user.... boucle infinie
+	
 	private User conducteur;
 	
 	public User getConducteur() {

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import poe.spring.domain.User;
+
 public class TrajetForm {
 	private String villeDepart;
 	private String villeArrivee;
@@ -11,6 +13,7 @@ public class TrajetForm {
 	private Date dateDepart;
 	private int prixTrajet;
 	private int nbPlaces;
+	private User user;
 		
 	public String getVilleDepart() {
 		return villeDepart;
@@ -42,5 +45,11 @@ public class TrajetForm {
 	}
 	public void setNbPlaces(int nbPlaces) {
 		this.nbPlaces = nbPlaces;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

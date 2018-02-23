@@ -15,33 +15,48 @@ import poe.spring.repository.UserRepository;
 public class TrajetManagerService {
 
 	@Autowired
-	private TrajetRepository trajetRepository;
+	private UserManagerService userManagerService;
 	
+	@Autowired
+	private TrajetRepository trajetRepository;
+
 	@Autowired
 	private UserRepository userRepository;
 
-	public Trajet creation(Long userId, String villeDepart, String villeArrivee, Date dateDepart, int prixTrajet, int nbPlaces) {
+	public Trajet creation(Long userId, String villeDepart, 
+			String villeArrivee, Date dateDepart, int prixTrajet,
+			int nbPlaces) throws Exception {
+
 		Trajet trajet = new Trajet();
 
 		User conducteur = userRepository.findOne(userId);
-		
-		trajet.setVilleDepart(villeDepart);
-		trajet.setVilleArrivee(villeArrivee);
-		trajet.setDateDepart(dateDepart);
-		trajet.setPrixTrajet(prixTrajet);
-		trajet.setNbPlaces(nbPlaces);
+		//User conducteur = userManagerService.visualiserUser(userId);
 
-		trajet.setConducteur(conducteur);
-		conducteur.getTrajets().add(trajet);
-		
-		trajetRepository.save(trajet);
+		if (conducteur != null) {
+			trajet.setVilleDepart(villeDepart);
+			trajet.setVilleArrivee(villeArrivee);
+			trajet.setDateDepart(dateDepart);
+			trajet.setPrixTrajet(prixTrajet);
+			trajet.setNbPlaces(nbPlaces);
 
+			trajet.setConducteur(conducteur);
+			conducteur.getTrajets().add(trajet);
+
+			trajet = trajetRepository.save(trajet);
+		} else {
+			throw new Exception("conducteur introuvable");
+		}
 		return trajet;
 	}
 
 	public List<Trajet> lister() {
 		List<Trajet> trajets = (List<Trajet>) trajetRepository.findAll();
 		return trajets;
+	}
+
+	public Trajet visualiserTrajet(Long trajetId) {
+		Trajet trajet = trajetRepository.findOne(trajetId);
+		return trajet;
 	}
 
 }
