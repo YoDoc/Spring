@@ -64,7 +64,8 @@ public class TrajetRestControlleur {
 		List <Trajet> trajets = new ArrayList<>();
 		trajets.addAll(trajetVilleDepart);
 		trajets.addAll(trajetVilleArrivee);
-			
+
+//fichier inutile
 		return trajets;
 	}
 
