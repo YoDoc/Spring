@@ -55,17 +55,18 @@ public class TrajetRestControlleur {
 		return trajet;
 	}
 
+	// Recherche de trajets par ville de depart/arrivee
 	@GetMapping("/search/{ville}")
 	public List<Trajet> searchByVille(@PathVariable("ville") String ville) {
 		
-		List <Trajet> trajetVilleDepart = trajetRepository.findByVilleDepartLike(ville + '%');
-		List <Trajet> trajetVilleArrivee = trajetRepository.findByVilleArriveeLike(ville + '%');
+		//List <Trajet> trajetVilleDepart = trajetRepository.findByVilleDepartLike(ville + '%');
+		//List <Trajet> trajetVilleArrivee = trajetRepository.findByVilleArriveeLike(ville + '%');
 		
 		List <Trajet> trajets = new ArrayList<>();
-		trajets.addAll(trajetVilleDepart);
-		trajets.addAll(trajetVilleArrivee);
+		trajets.addAll(trajetRepository.findByVilleDepartLike(ville + '%'));
+		trajets.addAll(trajetRepository.findByVilleArriveeLike(ville + '%'));
 
-//fichier inutile
+
 		return trajets;
 	}
 

@@ -15,6 +15,7 @@ public class ProposerUnTrajetDTO {
 	private int prixTrajet;
 	private int nbPlaces;
 	private long conducteurId;
+	
 	public long getId() {
 		return id;
 	}

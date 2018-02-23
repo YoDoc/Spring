@@ -30,8 +30,10 @@ public class TrajetControlleur {
 	@PostMapping("/nouveauTrajet") 
 	public String proposerTrajet(@Valid TrajetForm trajetForm, BindingResult bindRes, RedirectAttributes attr) throws Exception {
 
-		Trajet nouveauTrajet = trajetManagerService.creation(trajetForm.getUser().getId(), trajetForm.getVilleDepart(), trajetForm.getVilleArrivee(), 
-				trajetForm.getDateDepart(), trajetForm.getPrixTrajet(), trajetForm.getNbPlaces());
+		Trajet nouveauTrajet = trajetManagerService.creation(
+				trajetForm.getUser().getId(), trajetForm.getVilleDepart(), 
+				trajetForm.getVilleArrivee(), trajetForm.getDateDepart(), 
+				trajetForm.getPrixTrajet(), trajetForm.getNbPlaces());
 		
 		System.out.println("Trajet enregistré: \n id: "+nouveauTrajet.getId()+"\n Ville départ: " + nouveauTrajet.getVilleDepart() +
 				"\n ville arrivée: "+ nouveauTrajet.getVilleArrivee() + "\n nb places: "+ nouveauTrajet.getNbPlaces()+ 
