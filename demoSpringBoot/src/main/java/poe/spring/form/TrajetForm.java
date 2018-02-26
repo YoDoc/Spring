@@ -13,7 +13,7 @@ public class TrajetForm {
 	private Date dateDepart;
 	private int prixTrajet;
 	private int nbPlaces;
-	private User user;
+	private long userId;
 		
 	public String getVilleDepart() {
 		return villeDepart;
@@ -46,10 +46,11 @@ public class TrajetForm {
 	public void setNbPlaces(int nbPlaces) {
 		this.nbPlaces = nbPlaces;
 	}
-	public User getUser() {
-		return user;
+	public long getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
+	
 }
